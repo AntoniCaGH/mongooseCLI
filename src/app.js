@@ -1,7 +1,7 @@
 require("./db/connection");
 const { default: mongoose } = require("mongoose");
 const yargs = require("yargs");
-const { addMovie } = require("./movie/methods");
+const { addMovie, listMovies, updateMovie, deleteMovie, searchMovie } = require("./movie/methods");
 
 const app = async (yargsObj) => {
     try {
@@ -17,16 +17,25 @@ const app = async (yargsObj) => {
             console.log(`Successfully added ${yargsObj.title} (${yargsObj.year})`);
         } else if (yargsObj.list) {
             // list movies from database
+            await listMovies()
         } else if (yargsObj.update) {
             // update movies with filterObj and updateObj
+            await updateMovie(yargsObj)
+            console.log(`Successfully updated movie`)
         } else if (yargsObj.delete) {
             // delete movie with filterObj
+            await deleteMovie({title: yargsObj.title})
+            console.log(`Successfully deleted ${yargsObj.title}`)
+        } else if (yargsObj.searchMovie) {
+            // Search for a movie
+            await searchMovie({title: yargsObj.title})            
         } else {
             console.log("Incorrect Command");
         }
         await mongoose.disconnect()
     } catch (error) {
       console.log(error);
+      await mongoose.disconnect()
     }
 };
 
