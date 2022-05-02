@@ -42,3 +42,8 @@ const app = async (yargsObj) => {
 app(yargs.argv)
 
 // node src/app.js --add --title="Big Daddy" --year=1999
+// node src/app.js --add --title="The Matrix" --actor="Keanu Reeves" --year=1999 --genre="action" --rating="15"
+// node src/app.js --delete --title="Spider Man"
+// node src/app.js --list
+// node src/app.js --searchMovie --title="The Matrix"
+// node src/app.js --update --title="The Matrix" --newRating="15"
