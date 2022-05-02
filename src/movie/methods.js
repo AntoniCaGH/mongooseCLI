@@ -46,4 +46,15 @@ exports.deleteMovie = async (movieObj) => {
     } catch (error) {
         console.log(error)
     }
-}
+};
+
+// Search for a movie
+
+exports.searchMovie = async (movieObj) => {
+    try {
+        const result = await Movie.findOne(movieObj)
+        console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+};
