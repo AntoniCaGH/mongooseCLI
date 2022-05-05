@@ -1,2 +1,1 @@
 # mongooseCLI
-# m36Sequelize
